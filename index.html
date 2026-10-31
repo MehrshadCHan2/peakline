@@ -156,9 +156,9 @@ a.pk-way:hover{border-color:var(--ink-3);color:var(--ink)}
   .pk-wrap{padding-inline:40px}
   .pk-sec{padding-block:112px}
   .pk-hero{padding-block:72px 112px}
-  .pk-hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
-  .pk-hero-reel{gap:16px}
-  .pk-hero-reel>:nth-child(2){margin-top:-40px}
+  .pk-hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:center}
+  .pk-hero-reel{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,1fr);gap:16px;align-items:center}
+  .pk-hero-reel>:nth-child(2){margin-top:0}
   .pk-head-block{margin-bottom:44px}
   .pk-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:36px 20px}
   .pk-ba{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:80px;align-items:center}
@@ -228,6 +228,12 @@ html{scroll-behavior:smooth}
 .pk-morework summary:hover{color:var(--ink)}
 .pk-morework[open] summary{margin-bottom:20px}
 @container (min-width:1024px){.pk-grid--n4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* bigger hero videos (Mehrshad 2026-10-31: "so small") */
+@container (max-width:639.98px){
+  .pk-hero-reel{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding-inline:20px;scroll-padding-inline:20px;scrollbar-width:none}
+  .pk-hero-reel>.pk-card{flex:0 0 62%;scroll-snap-align:start}
+  .pk-hero-reel>:nth-child(2){margin-top:0}
+}
 
 </style>
 </head>
