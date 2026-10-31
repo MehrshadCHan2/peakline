@@ -73,40 +73,35 @@
       "title": "What a smile consultation includes",
       "clinic": "Dental clinic",
       "file": "smile-consultation.mp4",
-      "poster": "smile-consultation.jpg",
-      "more": true
+      "poster": "smile-consultation.jpg"
     },
     {
       "cat": "medical",
       "title": "Is the procedure worth it?",
       "clinic": "Medical clinic",
       "file": "cosmetic-surgery-worth-it.mp4",
-      "poster": "cosmetic-surgery-worth-it.jpg",
-      "more": true
+      "poster": "cosmetic-surgery-worth-it.jpg"
     },
     {
       "cat": "education",
       "title": "Sleep apnea and the jaw",
       "clinic": "Dental clinic",
       "file": "sleep-apnea.mp4",
-      "poster": "sleep-apnea.jpg",
-      "more": true
+      "poster": "sleep-apnea.jpg"
     },
     {
       "cat": "doctors",
       "title": "Feminine, not fragile",
       "clinic": "Dental clinic",
       "file": "feminine-not-fragile.mp4",
-      "poster": "feminine-not-fragile.jpg",
-      "more": true
+      "poster": "feminine-not-fragile.jpg"
     },
     {
       "cat": "team",
       "title": "Meet the team",
       "clinic": "Dental clinic",
       "file": "meet-the-team.mp4",
-      "poster": "meet-the-team.jpg",
-      "more": true
+      "poster": "meet-the-team.jpg"
     }
   ],
   "raw_vs_edited": {
@@ -130,5 +125,9 @@
     "text": "A public-service spot about protecting dental care for families in California. Same team, same standards as our clinic shorts.",
     "length": "0:34"
   },
-  "filters": false
+  "filters": false,
+  "drive": {
+    "url": "https://drive.google.com/drive/folders/1jwsCGj2e2teQw53ZDwMcZGGOpbRGDFbq",
+    "total": 126
+  }
 }

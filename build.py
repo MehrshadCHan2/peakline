@@ -66,6 +66,10 @@ cards = "\n".join(card(c, tag_of(c)) for c in cfg["clips"] if not c.get("more"))
 extra = [c for c in cfg["clips"] if c.get("more")]
 more_html = (f'<details class="pk-morework"><summary>See more work ({len(extra)} more)</summary><div class="pk-grid">'
              + "\n".join(card(c, tag_of(c)) for c in extra) + '</div></details>') if extra else ""
+dv = cfg.get("drive")
+shown = len(cfg["clips"]) + (1 if cfg.get("feature") else 0)
+drive_html = (f'<p class="pk-small">{dv["total"] - shown} more reels from the same archive, all in one folder.</p>'
+              f'<a class="pk-btn pk-btn--line pk-btn--sm" href="{e(dv["url"])}" target="_blank" rel="noopener">Watch {dv["total"] - shown} more reels on Google Drive</a>') if dv else              '<p class="pk-small">600+ edits in the archive. These are a few.</p><a class="pk-btn pk-btn--line pk-btn--sm" href="mailto:hello@peaklineedit.com?subject=Full%20reel">Ask for the full reel</a>'
 if not cfg.get("filters", True):
     chips = []
 hero =[c for c in cfg["clips"] if c.get("hero")][:3]
@@ -141,7 +145,7 @@ rep = {
     "{{FONT}}": base64.b64encode((SRC / "fonts" / "InstrumentSans-latin.woff2").read_bytes()).decode(),
     "{{CSS}}": (SRC / "styles.css").read_text(encoding="utf-8"),
     "{{STATS}}": stats_html, "{{STATS_STYLE}}": stats_style,
-    "{{HERO_REEL}}": hero_html, "{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
+    "{{HERO_REEL}}": hero_html, "{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
     "{{BA_PAIR}}": pair, "{{FEATURE}}": feature, "{{CHECK}}": CHECK, "{{CROSS}}": CROSS, "{{PLUS}}": PLUS,
     "{{TURN_OFFER}}": turn_offer, "{{TURN_STEP}}": turn_step,
     "{{LINKEDIN}}": linkedin, "{{PHONE}}": phone, "{{JS}}": JS.strip(),
