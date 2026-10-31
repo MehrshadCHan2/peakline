@@ -1,0 +1,134 @@
+{
+  "_help": "Edit this file, then run: python build.py   (LAUNCH=1 python build.py removes noindex). Empty linkedin/phone = that contact card is hidden. Clip 'file' = mp4 in media/ (served by GitHub Pages); 'poster' = file name in src/img (inlined). Empty src = placeholder card (preview only, never launch with placeholders).",
+  "release_base": "media/",
+  "turnaround": "",
+  "stats": [
+    [
+      "600+",
+      "medical videos edited"
+    ],
+    [
+      "13+",
+      "clinics, with a partner agency"
+    ]
+  ],
+  "linkedin": "https://www.linkedin.com/in/mehrshadjavid",
+  "phone": "",
+  "categories": [
+    [
+      "education",
+      "Patient education"
+    ],
+    [
+      "care",
+      "Patient care"
+    ],
+    [
+      "doctors",
+      "Meet the doctor"
+    ],
+    [
+      "team",
+      "Clinic & team"
+    ],
+    [
+      "medical",
+      "Medical"
+    ]
+  ],
+  "clips": [
+    {
+      "cat": "doctors",
+      "title": "Meet the doctor",
+      "clinic": "Dental clinic",
+      "file": "doctor-intro.mp4",
+      "poster": "doctor-intro.jpg",
+      "hero": true
+    },
+    {
+      "cat": "care",
+      "title": "Caring for nervous patients",
+      "clinic": "Dental clinic",
+      "file": "nervous-patients.mp4",
+      "poster": "nervous-patients.jpg",
+      "hero": true
+    },
+    {
+      "cat": "doctors",
+      "title": "The doctor behind the reputation",
+      "clinic": "Dental clinic",
+      "file": "doctor-reputation.mp4",
+      "poster": "doctor-reputation.jpg"
+    },
+    {
+      "cat": "education",
+      "title": "Living with missing teeth",
+      "clinic": "Dental clinic",
+      "file": "missing-teeth.mp4",
+      "poster": "missing-teeth.jpg",
+      "hero": true
+    },
+    {
+      "cat": "care",
+      "title": "What a smile consultation includes",
+      "clinic": "Dental clinic",
+      "file": "smile-consultation.mp4",
+      "poster": "smile-consultation.jpg",
+      "more": true
+    },
+    {
+      "cat": "medical",
+      "title": "Is the procedure worth it?",
+      "clinic": "Medical clinic",
+      "file": "cosmetic-surgery-worth-it.mp4",
+      "poster": "cosmetic-surgery-worth-it.jpg",
+      "more": true
+    },
+    {
+      "cat": "education",
+      "title": "Sleep apnea and the jaw",
+      "clinic": "Dental clinic",
+      "file": "sleep-apnea.mp4",
+      "poster": "sleep-apnea.jpg",
+      "more": true
+    },
+    {
+      "cat": "doctors",
+      "title": "Feminine, not fragile",
+      "clinic": "Dental clinic",
+      "file": "feminine-not-fragile.mp4",
+      "poster": "feminine-not-fragile.jpg",
+      "more": true
+    },
+    {
+      "cat": "team",
+      "title": "Meet the team",
+      "clinic": "Dental clinic",
+      "file": "meet-the-team.mp4",
+      "poster": "meet-the-team.jpg",
+      "more": true
+    }
+  ],
+  "raw_vs_edited": {
+    "raw": {
+      "file": "",
+      "poster": "",
+      "length": ""
+    },
+    "edited": {
+      "file": "",
+      "poster": "",
+      "length": ""
+    },
+    "enabled": false
+  },
+  "feature": {
+    "file": "tv-spot.mp4",
+    "poster": "tv-spot.jpg",
+    "label": "Aired on TV in Los Angeles",
+    "title": "A 30-second TV spot on dental care cuts",
+    "text": "A public-service spot about protecting dental care for families in California. Same team, same standards as our clinic shorts.",
+    "length": "0:34"
+  },
+  "filters": false
+}
