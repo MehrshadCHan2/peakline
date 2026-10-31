@@ -145,7 +145,7 @@ rep = {
     "{{FONT}}": base64.b64encode((SRC / "fonts" / "InstrumentSans-latin.woff2").read_bytes()).decode(),
     "{{CSS}}": (SRC / "styles.css").read_text(encoding="utf-8"),
     "{{STATS}}": stats_html, "{{STATS_STYLE}}": stats_style,
-    "{{HERO_REEL}}": hero_html, "{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
+    "{{HERO_REEL}}": hero_html, "{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{ABOUT_IMG}}": img(cfg.get("about_photo", "about.jpg")).replace('alt=""', 'alt="Mehrshad Javid"'), "{{LINKEDIN_URL}}": e(cfg.get("linkedin", "")), "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
     "{{BA_PAIR}}": pair, "{{FEATURE}}": feature, "{{CHECK}}": CHECK, "{{CROSS}}": CROSS, "{{PLUS}}": PLUS,
     "{{TURN_OFFER}}": turn_offer, "{{TURN_STEP}}": turn_step,
     "{{LINKEDIN}}": linkedin, "{{PHONE}}": phone, "{{JS}}": JS.strip(),

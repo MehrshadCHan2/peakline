@@ -217,3 +217,12 @@ html{scroll-behavior:smooth}
   .pk-hero-reel>.pk-card{flex:0 0 62%;scroll-snap-align:start}
   .pk-hero-reel>:nth-child(2){margin-top:0}
 }
+/* about */
+.pk-about{display:grid;gap:28px;align-items:center}
+.pk-about-photo{margin:0;width:100%;max-width:320px;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:var(--poster);border:1px solid var(--line-soft)}
+.pk-about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.pk-about-text{display:grid;gap:16px;align-content:center;justify-items:start}
+@container (min-width:1024px){
+  .pk-about{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:80px}
+  .pk-about-photo{max-width:none}
+}
