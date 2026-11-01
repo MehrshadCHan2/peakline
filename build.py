@@ -69,7 +69,7 @@ more_html = (f'<details class="pk-morework"><summary>See more work ({len(extra)}
 dv = cfg.get("drive")
 shown = len(cfg["clips"]) + (1 if cfg.get("feature") else 0)
 drive_html = (f'<p class="pk-small">{dv["total"] - shown} more reels from the same archive, all in one folder.</p>'
-              f'<a class="pk-btn pk-btn--line pk-btn--sm" href="{e(dv["url"])}" target="_blank" rel="noopener">Watch {dv["total"] - shown} more reels on Google Drive</a>') if dv else              '<p class="pk-small">600+ edits in the archive. These are a few.</p><a class="pk-btn pk-btn--line pk-btn--sm" href="mailto:hello@peaklineedit.com?subject=Full%20reel">Ask for the full reel</a>'
+              f'<a class="pk-btn pk-btn--line pk-btn--sm" href="{e(dv["url"])}" target="_blank" rel="noopener">Watch {dv["total"] - shown} more reels on Google Drive</a>') if dv else              '<p class="pk-small">600+ edits in the archive. These are a few.</p><a class="pk-btn pk-btn--line pk-btn--sm" href="mailto:mehrshad@peaklineedit.com?subject=Full%20reel">Ask for the full reel</a>'
 if not cfg.get("filters", True):
     chips = []
 hero =[c for c in cfg["clips"] if c.get("hero")][:3]
