@@ -226,3 +226,8 @@ html{scroll-behavior:smooth}
   .pk-about{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:80px}
   .pk-about-photo{max-width:none}
 }
+/* 1 hour -> 8-12 shorts equation */
+.pk-equation{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:6px;align-self:flex-start;padding:10px 14px;border-radius:12px;background:var(--blue-tint);border:1px solid #D3E2FB;color:var(--ink-2);font-size:15px;line-height:1.4}
+.pk-equation b{color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.pk-equation span[aria-hidden]{color:var(--blue);font-weight:600}
+.pk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}

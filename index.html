@@ -243,6 +243,11 @@ html{scroll-behavior:smooth}
   .pk-about{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:80px}
   .pk-about-photo{max-width:none}
 }
+/* 1 hour -> 8-12 shorts equation */
+.pk-equation{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:6px;align-self:flex-start;padding:10px 14px;border-radius:12px;background:var(--blue-tint);border:1px solid #D3E2FB;color:var(--ink-2);font-size:15px;line-height:1.4}
+.pk-equation b{color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.pk-equation span[aria-hidden]{color:var(--blue);font-weight:600}
+.pk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 </style>
 </head>
@@ -402,6 +407,7 @@ html{scroll-behavior:smooth}
 <div class="pk-lane">
 <span class="pk-label">You don't film yet</span>
 <h3 class="pk-h3">Full content system</h3>
+<p class="pk-equation"><b>1 hour</b> of filming <span aria-hidden="true">→</span><span class="pk-sr"> becomes </span> <b>8–12 shorts</b> a month</p>
 <p class="pk-p">We plan what to film and guide you through it. You give us one hour a month.</p>
 <ul class="pk-checks">
 <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#EAF2FE"></circle><path d="m6 10.2 2.6 2.6L14 7.4" stroke="#1B5FD9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>A monthly content plan and scripts</span></li>
@@ -465,6 +471,10 @@ html{scroll-behavior:smooth}
 <details>
 <summary>Who edits the videos?<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round"></path></svg></summary>
 <p>A small team trained on our editing system for dental and medical video. Every short is checked before it reaches you.</p>
+</details>
+<details>
+<summary>Why not just hire our own editor?<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round"></path></svg></summary>
+<p>An in-house editor costs a full salary, needs managing, and leaves when they leave. With us you get a tested editing system, a quality check on every short, and a team that keeps delivering when one person is sick or on holiday.</p>
 </details>
 <details>
 <summary>How much does it cost?<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round"></path></svg></summary>
