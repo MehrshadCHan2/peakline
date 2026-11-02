@@ -248,8 +248,9 @@ html{scroll-behavior:smooth}
 .pk-equation b{color:var(--ink);font-weight:600;font-size:17px;letter-spacing:-.01em}
 .pk-equation span[aria-hidden]{color:var(--blue);font-weight:600}
 .pk-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.pk-price{display:flex;align-items:baseline;gap:6px;margin:-6px 0 0;color:var(--ink-2);font-size:15px}
+.pk-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;margin:-6px 0 0;color:var(--ink-2);font-size:15px}
 .pk-price b{color:var(--ink);font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1}
+.pk-from{flex-basis:100%;color:var(--ink);font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
 
 </style>
 </head>
@@ -399,7 +400,7 @@ html{scroll-behavior:smooth}
 <div class="pk-lane">
 <span class="pk-label">You already film</span>
 <h3 class="pk-h3">Edit</h3>
-<p class="pk-price"><b>$750</b> / month</p>
+<p class="pk-price"><strong class="pk-from">Starting from</strong><b>$750</b> / month</p>
 <p class="pk-p">Send us the videos you record. We turn them into 8 shorts every month.</p>
 <ul class="pk-checks">
 <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#EAF2FE"></circle><path d="m6 10.2 2.6 2.6L14 7.4" stroke="#1B5FD9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>8 shorts a month, edited from your own footage</span></li>
@@ -412,7 +413,7 @@ html{scroll-behavior:smooth}
 <div class="pk-lane">
 <span class="pk-label">You don't film yet</span>
 <h3 class="pk-h3">Full</h3>
-<p class="pk-price"><b>$1,800</b> / month</p>
+<p class="pk-price"><strong class="pk-from">Starting from</strong><b>$1,800</b> / month</p>
 <p class="pk-equation"><b>1 hour</b> of filming <span aria-hidden="true">→</span><span class="pk-sr"> becomes </span> <b>12 shorts</b> a month</p>
 <p class="pk-p">We plan what to film and guide you through it. You give us one hour a month.</p>
 <ul class="pk-checks">
@@ -485,7 +486,7 @@ html{scroll-behavior:smooth}
 </details>
 <details>
 <summary>How much does it cost?<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round"></path></svg></summary>
-<p>Edit is $750 a month for 8 shorts from your footage. Full is $1,800 a month for 12 shorts, with the plan, the scripts and a guided filming hour. Both are monthly, with no contract, and you start with a free sample so you can judge the quality first.</p>
+<p>Edit starts from $750 a month for 8 shorts from your footage. Full starts from $1,800 a month for 12 shorts, with the plan, the scripts and a guided filming hour. Both are monthly, with no contract, and you start with a free sample so you can judge the quality first.</p>
 </details>
 <details>
 <summary>How fast do we get the shorts?<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="#0E1A2B" stroke-width="1.8" stroke-linecap="round"></path></svg></summary>
