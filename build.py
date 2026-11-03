@@ -152,6 +152,9 @@ rep = {
 out_root = pathlib.Path(os.environ.get("OUT") or ROOT)
 pages = [("clinics.html", "clinics/index.html"),
          ("home.html" if (SRC / "home.html").exists() else "clinics.html", "index.html")]
+# extra pages: src/<name>.html -> /<name>/ (e.g. system.html -> /system/, pack.html -> /pack/)
+pages += [(p.name, f"{p.stem}/index.html") for p in sorted(SRC.glob("*.html"))
+          if p.name not in ("clinics.html", "home.html", "page.html")]
 for tpl, dest in pages:
     out = (SRC / tpl).read_text(encoding="utf-8")
     if not ba_on:

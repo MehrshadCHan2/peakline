@@ -46,14 +46,6 @@
       "hero": true
     },
     {
-      "cat": "care",
-      "title": "Caring for nervous patients",
-      "clinic": "Dental clinic",
-      "file": "nervous-patients.mp4",
-      "poster": "nervous-patients.jpg",
-      "hero": true
-    },
-    {
       "cat": "doctors",
       "title": "The doctor behind the reputation",
       "clinic": "Dental clinic",
@@ -87,7 +79,8 @@
       "title": "Sleep apnea and the jaw",
       "clinic": "Dental clinic",
       "file": "sleep-apnea.mp4",
-      "poster": "sleep-apnea.jpg"
+      "poster": "sleep-apnea.jpg",
+      "hero": true
     },
     {
       "cat": "doctors",
