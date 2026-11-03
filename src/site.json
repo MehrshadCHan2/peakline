@@ -1,6 +1,6 @@
 {
   "_help": "Edit this file, then run: python build.py   (LAUNCH=1 python build.py removes noindex). Empty linkedin/phone = that contact card is hidden. Clip 'file' = mp4 in media/ (served by GitHub Pages); 'poster' = file name in src/img (inlined). Empty src = placeholder card (preview only, never launch with placeholders).",
-  "release_base": "media/",
+  "release_base": "/media/",
   "turnaround": "48 hours",
   "stats": [
     [

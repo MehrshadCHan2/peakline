@@ -136,10 +136,7 @@ JS = r"""
 """
 
 launch = os.environ.get("LAUNCH") == "1"
-out = (SRC / "page.html").read_text(encoding="utf-8")
-if not ba_on:
-    import re
-    out = re.sub(r"<!--BA-->.*?<!--/BA-->\s*", "", out, flags=re.S)
+import re
 rep = {
     "{{ROBOTS}}": "" if launch else '<meta name="robots" content="noindex">',
     "{{FONT}}": base64.b64encode((SRC / "fonts" / "InstrumentSans-latin.woff2").read_bytes()).decode(),
@@ -150,12 +147,24 @@ rep = {
     "{{TURN_OFFER}}": turn_offer, "{{TURN_STEP}}": turn_step,
     "{{LINKEDIN}}": linkedin, "{{PHONE}}": phone, "{{JS}}": JS.strip(),
 }
-for k, v in rep.items():
-    out = out.replace(k, v)
-left = [t for t in ("{{",) if t in out]
-if left:
-    sys.exit("unreplaced placeholder in page.html")
-(pathlib.Path(os.environ.get("OUT") or ROOT / "index.html")).write_text(out, encoding="utf-8")
-print(f"index.html {len(out.encode())/1024:.0f} kB · {'LAUNCH (indexable)' if launch else 'noindex'}")
+# template -> output. Clinic page always at /clinics/; the homepage uses home.html once it exists
+# (until then / keeps showing the clinic page, so no link ever breaks).
+out_root = pathlib.Path(os.environ.get("OUT") or ROOT)
+pages = [("clinics.html", "clinics/index.html"),
+         ("home.html" if (SRC / "home.html").exists() else "clinics.html", "index.html")]
+for tpl, dest in pages:
+    out = (SRC / tpl).read_text(encoding="utf-8")
+    if not ba_on:
+        out = re.sub(r"<!--BA-->.*?<!--/BA-->\s*", "", out, flags=re.S)
+    for k, v in rep.items():
+        out = out.replace(k, v)
+    if "{{" in out:
+        sys.exit(f"unreplaced placeholder in {tpl}")
+    if tpl == "clinics.html" and dest == "index.html":  # temporary: / still serves clinic copy
+        out = out.replace('href="https://peaklineedit.com/clinics/">', 'href="https://peaklineedit.com/">', 1)
+    p = out_root / dest
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(out, encoding="utf-8")
+    print(f"{dest} ({tpl}) {len(out.encode())/1024:.0f} kB · {'LAUNCH (indexable)' if launch else 'noindex'}")
 for w in sorted(set(warn)):
     print("  ⚠", w)
