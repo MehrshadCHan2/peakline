@@ -122,5 +122,50 @@
   "drive": {
     "url": "https://drive.google.com/drive/folders/1jwsCGj2e2teQw53ZDwMcZGGOpbRGDFbq",
     "total": 126
-  }
+  },
+  "direct": [
+    {
+      "tag": "Founder",
+      "title": "Founder reel",
+      "clinic": "Charlotte Trecartin · Shark Tank, Forbes 30 Under 30",
+      "file": "charlotte.mp4",
+      "poster": "charlotte.jpg"
+    },
+    {
+      "tag": "Podcast",
+      "title": "Story first",
+      "clinic": "The PMP Show · podcast",
+      "file": "pmp-storytelling.mp4",
+      "poster": "pmp-storytelling.jpg"
+    },
+    {
+      "tag": "Brand",
+      "title": "A community, explained in a minute",
+      "clinic": "Kabul House · community brand",
+      "file": "kabul-house.mp4",
+      "poster": "kabul-house.jpg"
+    },
+    {
+      "tag": "Podcast",
+      "title": "The hook is the story",
+      "clinic": "The PMP Show · podcast",
+      "file": "pmp-wanted-to-be-happy.mp4",
+      "poster": "pmp-wanted-to-be-happy.jpg"
+    },
+    {
+      "tag": "Podcast",
+      "title": "One emotional beat",
+      "clinic": "The PMP Show · podcast",
+      "file": "pmp-god-loves-us.mp4",
+      "poster": "pmp-god-loves-us.jpg"
+    }
+  ],
+  "hello": [
+    "charlotte.mp4",
+    "pmp-storytelling.mp4",
+    "kabul-house.mp4",
+    "doctor-intro.mp4",
+    "missing-teeth.mp4",
+    "sleep-apnea.mp4"
+  ]
 }

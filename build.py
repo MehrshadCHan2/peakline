@@ -51,7 +51,8 @@ def card(c, tag, meta=True, extra=""):
         clinic = c.get("clinic") or "[Clinic name]"
         if not c.get("clinic"):
             warn.append(f"no clinic name for '{label}'")
-        body += f'<span class="pk-card-meta"><b>{e(label)}</b><span>{e(clinic)} · made with a partner agency</span></span>'
+        credit = "" if c.get("direct") else " · made with a partner agency"
+        body += f'<span class="pk-card-meta"><b>{e(label)}</b><span>{e(clinic)}{credit}</span></span>'
     return f'<button type="button" class="pk-card" data-cat="{e(c.get("cat",""))}" aria-label="Play: {e(label)}"{attrs}>{body}</button>'
 
 
@@ -63,6 +64,12 @@ used = {c["cat"] for c in cfg["clips"]}
 chips += [f'<button type="button" class="pk-chip" aria-pressed="false" data-f="{k}">{e(v)}</button>' for k, v in cfg["categories"] if k in used]
 
 cards = "\n".join(card(c, tag_of(c)) for c in cfg["clips"] if not c.get("more"))
+# our own direct clients (founders, podcasts, brands): named, no partner-agency credit
+direct = [dict(c, direct=True) for c in cfg.get("direct", [])]
+direct_cards = "\n".join(card(c, c["tag"]) for c in direct)
+by_file = {c["file"]: (c, c["tag"]) for c in direct}
+by_file.update({c["file"]: (c, tag_of(c)) for c in cfg["clips"]})
+hello_cards = "\n".join(card(*by_file[f]) for f in cfg.get("hello", []) if f in by_file)
 extra = [c for c in cfg["clips"] if c.get("more")]
 more_html = (f'<details class="pk-morework"><summary>See more work ({len(extra)} more)</summary><div class="pk-grid">'
              + "\n".join(card(c, tag_of(c)) for c in extra) + '</div></details>') if extra else ""
@@ -142,7 +149,7 @@ rep = {
     "{{FONT}}": base64.b64encode((SRC / "fonts" / "InstrumentSans-latin.woff2").read_bytes()).decode(),
     "{{CSS}}": (SRC / "styles.css").read_text(encoding="utf-8"),
     "{{STATS}}": stats_html, "{{STATS_STYLE}}": stats_style,
-    "{{HERO_REEL}}": hero_html, "{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{ABOUT_IMG}}": img(cfg.get("about_photo", "about.jpg")).replace('alt=""', 'alt="Mehrshad Javid"'), "{{LINKEDIN_URL}}": e(cfg.get("linkedin", "")), "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
+    "{{HERO_REEL}}": hero_html, "{{DIRECT_CARDS}}": direct_cards, "{{NDIRECT}}": str(len(direct)), "{{HELLO_CARDS}}": hello_cards,"{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{ABOUT_IMG}}": img(cfg.get("about_photo", "about.jpg")).replace('alt=""', 'alt="Mehrshad Javid"'), "{{LINKEDIN_URL}}": e(cfg.get("linkedin", "")), "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
     "{{BA_PAIR}}": pair, "{{FEATURE}}": feature, "{{CHECK}}": CHECK, "{{CROSS}}": CROSS, "{{PLUS}}": PLUS,
     "{{TURN_OFFER}}": turn_offer, "{{TURN_STEP}}": turn_step,
     "{{LINKEDIN}}": linkedin, "{{PHONE}}": phone, "{{JS}}": JS.strip(),

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Content Run · Peakline</title>
-<meta name="description" content="Your short-form, made every month: Run 8 at $800 or Run 16 at $1,500 a month. Our system does the heavy lifting, two editors finish, every video checked.">
+<title>Content Run · Editor-led content every month · Peakline</title>
+<meta name="description" content="Editor-led short-form for your account, every month: Run 8 at $800 or Run 16 at $1,500 a month. Two trained editors finish each video, and every one is checked.">
 
 <link rel="canonical" href="https://peaklineedit.com/system/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Content Run · Peakline">
-<meta property="og:description" content="Your short-form, made every month: Run 8 at $800 or Run 16 at $1,500 a month. Our system does the heavy lifting, two editors finish, every video checked.">
+<meta property="og:title" content="Content Run · Editor-led content every month · Peakline">
+<meta property="og:description" content="Editor-led short-form for your account, every month: Run 8 at $800 or Run 16 at $1,500 a month. Two trained editors finish each video, and every one is checked.">
 <meta property="og:url" content="https://peaklineedit.com/system/">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%231B5FD9'/%3E%3Cpath d='M5 19.5 10.5 10l3.5 5.5 3-4 6 8' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -263,6 +263,14 @@ html{scroll-behavior:smooth}
 .pk-verify{background:#FFF1A8;color:#5A4500;border-radius:4px;padding:0 4px;font-weight:600}
 .pk-note{padding:24px;border-radius:16px;background:var(--blue-tint);border:1px solid #D3E2FB}
 
+/* founder quote card under the hero headline */
+.pk-founder{margin:4px 0 0;padding:16px 20px;border-left:3px solid var(--blue);background:var(--blue-tint);border-radius:0 12px 12px 0}
+.pk-founder blockquote{margin:0;color:var(--ink);font-size:clamp(1.05rem,.95rem + .5cqi,1.3rem);line-height:1.4;font-weight:600;letter-spacing:-.01em}
+.pk-founder .pk-cite{margin-top:8px}
+
+@container (min-width:1024px){.pk-grid--n6{grid-template-columns:repeat(6,minmax(0,1fr));gap:28px 14px}}
+.pk-sec-sub{margin:48px 0 20px}
+
 </style>
 </head>
 <body>
@@ -279,7 +287,7 @@ html{scroll-behavior:smooth}
 <a href="/system/">Content Run</a>
 <a href="/pack/">Skill Pack</a>
 <a href="/clinics/">For clinics</a>
-<a href="/#work">Work</a>
+<a href="/work/">Work</a>
 <a class="pk-btn pk-btn--line pk-btn--sm pk-head-cta-desk" href="#contact">Contact</a>
 </nav>
 <a class="pk-btn pk-btn--line pk-btn--sm pk-head-cta-phone" href="#contact">Contact</a>
@@ -291,8 +299,8 @@ html{scroll-behavior:smooth}
 <div class="pk-wrap">
 <div class="pk-hero-text" style="max-width:760px">
 <span class="pk-label"><i></i>Content Run</span>
-<h1 class="pk-h1">Content Run: your short-form, made every month.</h1>
-<p class="pk-sub">You film. Our system and editors turn it into shorts in your own look, and I check every video before you see it.</p>
+<h1 class="pk-h1">Editor-led content for your account, every month.</h1>
+<p class="pk-sub">You film. An editor shapes it into shorts in your own look, and a person checks every video before you see it.</p>
 <div class="pk-ctas"><a class="pk-btn pk-btn--blue" href="#contact">Want this for your account?</a><a class="pk-btn pk-btn--line" href="#plans">See the plans</a></div>
 </div>
 </div>
@@ -300,9 +308,10 @@ html{scroll-behavior:smooth}
 
 <section class="pk-sec" style="padding-top:0">
 <div class="pk-wrap">
-<div class="pk-vs">
-<div class="pk-vs-col"><span class="pk-label">Who it's for</span><p class="pk-p">Businesses and creators who already have footage (or long videos) but no time to edit, caption and post every week.</p></div>
-<div class="pk-vs-col pk-vs-yes"><span class="pk-label">How it's made</span><p class="pk-p">Our Claude-based system does the heavy lifting: cutting, captions, first drafts. Two trained editors finish each video. I check every one before it reaches you.</p></div>
+<div class="pk-why pk-why--3">
+<div class="pk-why-card"><span class="pk-step-n">1</span><h3 class="pk-h3">Content know-how</h3><p class="pk-p">What to post and how each video opens.</p></div>
+<div class="pk-why-card"><span class="pk-step-n">2</span><h3 class="pk-h3">Editing craft</h3><p class="pk-p">Your look, captions and pacing, the same every week.</p></div>
+<div class="pk-why-card"><span class="pk-step-n">3</span><h3 class="pk-h3">Speed</h3><p class="pk-p">Shorts ready every month, without hiring a team.</p></div>
 </div>
 </div>
 </section>
@@ -339,6 +348,7 @@ html{scroll-behavior:smooth}
 <div class="pk-note" style="margin-top:20px">
 <p class="pk-p"><b>Set-up, once: $1,500.</b> We build your look into the system: hooks, captions, pacing, a quality checklist made for your account.</p>
 <p class="pk-p" style="margin-top:8px"><b>Founding clients:</b> the first 3 clients pay no set-up fee.</p>
+<p class="pk-p" style="margin-top:8px"><b>How it&rsquo;s made:</b> We work better and faster with the latest tools and AI; two trained editors finish each video, and our founder checks every one.</p>
 </div>
 </div>
 </section>
