@@ -79,8 +79,9 @@ drive_html = (f'<p class="pk-small">{dv["total"] - shown} more reels from the sa
               f'<a class="pk-btn pk-btn--line pk-btn--sm" href="{e(dv["url"])}" target="_blank" rel="noopener">Watch {dv["total"] - shown} more reels on Google Drive</a>') if dv else              '<p class="pk-small">600+ edits in the archive. These are a few.</p><a class="pk-btn pk-btn--line pk-btn--sm" href="mailto:mehrshad@peaklineedit.com?subject=Full%20reel">Ask for the full reel</a>'
 if not cfg.get("filters", True):
     chips = []
-hero =[c for c in cfg["clips"] if c.get("hero")][:3]
-hero_html = "\n".join(card(c, tag_of(c), meta=False) for c in hero)
+# hero = the direct-client videos marked "hero" in site.json (falls back to the first 3)
+hero = ([c for c in direct if c.get("hero")] or direct)[:3]
+hero_html = "\n".join(card(c, c["tag"], meta=False) for c in hero)
 
 ba = cfg["raw_vs_edited"]
 ba_on = ba.get("enabled", True)
@@ -92,13 +93,18 @@ for key, tag, cap in ((("raw", "Raw", "As filmed"), ("edited", "Edited", "Peakli
         warn.append(f"no length for raw/edited {key}")
     pair += f'<figure>{card(c, tag, meta=False, extra=" pk-raw" if key == "raw" else "")}<figcaption>{cap} <span>{e(length)}</span></figcaption></figure>\n'
 
-ft = cfg.get("feature")
-feature = ""
-if ft:
+def feature_block(ft, tag, credit):
+    """Wide 16:9 video with text beside it (TV spot, YouTube re-edit)."""
+    if not ft:
+        return ""
     fc = dict(ft, cat="feature", title=ft["title"])
-    btn = card(fc, "On TV", meta=False, extra=" pk-poster--wide").replace('class="pk-card"', 'class="pk-card pk-feature-play"', 1)
-    feature = (f'<div class="pk-feature">{btn}<div class="pk-feature-text"><span class="pk-label"><i></i>{e(ft["label"])}</span>'
-               f'<h3 class="pk-h3">{e(ft["title"])}</h3><p class="pk-p">{e(ft["text"])}</p><p class="pk-small">{e(ft.get("length",""))} · made with a partner agency</p></div></div>')
+    btn = card(fc, tag, meta=False, extra=" pk-poster--wide").replace('class="pk-card"', 'class="pk-card pk-feature-play"', 1)
+    return (f'<div class="pk-feature">{btn}<div class="pk-feature-text"><span class="pk-label"><i></i>{e(ft["label"])}</span>'
+            f'<h3 class="pk-h3">{e(ft["title"])}</h3><p class="pk-p">{e(ft["text"])}</p><p class="pk-small">{e(ft.get("length",""))}{credit}</p></div></div>')
+
+
+feature = feature_block(cfg.get("feature"), "On TV", " · made with a partner agency")
+yt_feature = feature_block(cfg.get("yt_feature"), "YouTube", "")
 
 stats = cfg["stats"][:3]
 stats_html = "\n".join(f'<div class="pk-stat"><b>{e(n)}</b><span>{e(l)}</span></div>' for n, l in stats)
@@ -150,18 +156,16 @@ rep = {
     "{{CSS}}": (SRC / "styles.css").read_text(encoding="utf-8"),
     "{{STATS}}": stats_html, "{{STATS_STYLE}}": stats_style,
     "{{HERO_REEL}}": hero_html, "{{DIRECT_CARDS}}": direct_cards, "{{NDIRECT}}": str(len(direct)), "{{HELLO_CARDS}}": hello_cards,"{{CHIPS}}": "\n".join(chips), "{{CARDS}}": cards, "{{MORE}}": more_html, "{{DRIVE}}": drive_html, "{{ABOUT_IMG}}": img(cfg.get("about_photo", "about.jpg")).replace('alt=""', 'alt="Mehrshad Javid"'), "{{LINKEDIN_URL}}": e(cfg.get("linkedin", "")), "{{NCARDS}}": str(sum(1 for c in cfg["clips"] if not c.get("more"))),
-    "{{BA_PAIR}}": pair, "{{FEATURE}}": feature, "{{CHECK}}": CHECK, "{{CROSS}}": CROSS, "{{PLUS}}": PLUS,
+    "{{BA_PAIR}}": pair, "{{FEATURE}}": feature, "{{YT_FEATURE}}": yt_feature, "{{CHECK}}": CHECK, "{{CROSS}}": CROSS, "{{PLUS}}": PLUS,
     "{{TURN_OFFER}}": turn_offer, "{{TURN_STEP}}": turn_step,
     "{{LINKEDIN}}": linkedin, "{{PHONE}}": phone, "{{JS}}": JS.strip(),
 }
-# template -> output. Clinic page always at /clinics/; the homepage uses home.html once it exists
-# (until then / keeps showing the clinic page, so no link ever breaks).
+# template -> output: home.html -> /, every other src/<name>.html -> /<name>/ (work, hello)
 out_root = pathlib.Path(os.environ.get("OUT") or ROOT)
-pages = [("clinics.html", "clinics/index.html"),
-         ("home.html" if (SRC / "home.html").exists() else "clinics.html", "index.html")]
-# extra pages: src/<name>.html -> /<name>/ (e.g. system.html -> /system/, pack.html -> /pack/)
-pages += [(p.name, f"{p.stem}/index.html") for p in sorted(SRC.glob("*.html"))
-          if p.name not in ("clinics.html", "home.html", "page.html")]
+pages = [("home.html", "index.html")]
+pages += [(p.name, f"{p.stem}/index.html") for p in sorted(SRC.glob("*.html")) if p.name != "home.html"]
+# removed pages (2026-11-15): their URLs redirect to the homepage, so links already sent still work
+REDIRECTS = ["clinics", "system", "pack"]
 for tpl, dest in pages:
     out = (SRC / tpl).read_text(encoding="utf-8")
     if not ba_on:
@@ -170,11 +174,17 @@ for tpl, dest in pages:
         out = out.replace(k, v)
     if "{{" in out:
         sys.exit(f"unreplaced placeholder in {tpl}")
-    if tpl == "clinics.html" and dest == "index.html":  # temporary: / still serves clinic copy
-        out = out.replace('href="https://peaklineedit.com/clinics/">', 'href="https://peaklineedit.com/">', 1)
     p = out_root / dest
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(out, encoding="utf-8")
     print(f"{dest} ({tpl}) {len(out.encode())/1024:.0f} kB · {'LAUNCH (indexable)' if launch else 'noindex'}")
+for r in REDIRECTS:
+    d = out_root / r
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "index.html").write_text('<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+                                  '<meta http-equiv="refresh" content="0; url=/">'
+                                  '<link rel="canonical" href="https://peaklineedit.com/"><title>Peakline</title>'
+                                  '<a href="/">peaklineedit.com</a>', encoding="utf-8")
+    print(f"{r}/index.html -> redirect to /")
 for w in sorted(set(warn)):
     print("  ⚠", w)
