@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mehrshad Javid · Get a free sample</title>
-<meta name="description" content="A 60-second recut of one of your videos, or a script outline for your next one. Video editor and content strategist for creators who sell courses.">
+<meta name="description" content="A free 30&ndash;60 second re-edit of one of your published videos. Video editor and content strategist for creators who sell courses.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://peaklineedit.com/hello/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mehrshad Javid · Get a free sample">
-<meta property="og:description" content="A 60-second recut of one of your videos, or a script outline for your next one. Video editor and content strategist for creators who sell courses.">
+<meta property="og:description" content="A free 30&ndash;60 second re-edit of one of your published videos. Video editor and content strategist for creators who sell courses.">
 <meta property="og:url" content="https://peaklineedit.com/hello/">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%231B5FD9'/%3E%3Cpath d='M5 19.5 10.5 10l3.5 5.5 3-4 6 8' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -280,6 +280,24 @@ html{scroll-behavior:smooth}
 .pk-pillar b{display:block;margin-bottom:6px;color:var(--ink)}
 .pk-pillar span{color:var(--ink-2);font-size:14px;line-height:1.45}
 
+/* free-sample form */
+.pk-form{display:grid;gap:16px;margin-top:20px;padding:24px;border-radius:16px;background:#fff;border:1px solid var(--line-soft)}
+@container (min-width:640px){.pk-form{grid-template-columns:repeat(2,minmax(0,1fr));padding:32px}.pk-field--wide{grid-column:1 / -1}}
+.pk-field{display:grid;gap:6px}
+.pk-field label{font-size:14px;font-weight:600;color:var(--ink)}
+.pk-field label span{font-weight:400;color:var(--ink-2)}
+.pk-field input,.pk-field select{width:100%;min-height:48px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:16px}
+.pk-field input:focus,.pk-field select:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:var(--blue)}
+.pk-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.pk-form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.pk-form-msg{margin:0;font-size:15px;color:var(--ink-2)}
+.pk-form.is-sent .pk-field{opacity:.5}
+.pk-form.is-sent button{display:none}
+.pk-form.is-sent .pk-form-msg{color:var(--ink);font-weight:600}
+/* header name: one line on phones */
+.pk-logo{white-space:nowrap}
+@media (max-width:480px){.pk-logo span span{display:none}}
+
 </style>
 </head>
 <body>
@@ -313,7 +331,7 @@ html{scroll-behavior:smooth}
 <a class="pk-btn pk-btn--blue" href="#sample">Get a free sample</a>
 <a class="pk-btn pk-btn--line" href="/work/">See my work</a>
 </div>
-<p class="pk-sidelink">A 60-second recut of one of your videos, or a script outline for your next one.</p>
+<p class="pk-sidelink">A free 30&ndash;60 second re-edit of one of your published videos.</p>
 <div class="pk-proofstrip"><span><b>600+ videos</b> edited, most for US clinics through a partner agency</span><span><b>~70K followers</b> on my Persian channels</span><span><b>172 students</b> in my own course</span></div>
 </div>
 <div class="pk-hero-reel" aria-label="Three example videos">
@@ -348,13 +366,39 @@ html{scroll-behavior:smooth}
 <div class="pk-head-block">
 <span class="pk-label"><i></i>Free sample</span>
 <h2 class="pk-h2">See it on your own channel first.</h2>
-<p class="pk-p">Send me your channel and pick one:</p>
 </div>
-<div class="pk-lanes">
-<div class="pk-lane"><h3 class="pk-h3">A 60-second recut</h3><p class="pk-p">I re-edit a minute of one of your videos, so you can see the difference.</p></div>
-<div class="pk-lane"><h3 class="pk-h3">A script outline</h3><p class="pk-p">An outline for your next video: hook, structure and the line that leads to what you sell.</p></div>
-</div>
-<div class="pk-ctas" style="margin-top:20px"><a class="pk-btn pk-btn--blue" href="mailto:mehrshad@peaklineedit.com?subject=Free%20sample">Get a free sample</a></div>
+<p class="pk-p" style="max-width:640px">I make a free 30&ndash;60 second sample from one of your published videos. I take on a few each week, so I&rsquo;ll reply within 48 hours if it&rsquo;s a fit.</p>
+<form class="pk-form" id="sample-form" novalidate>
+<div class="pk-field"><label for="sf-name">Name</label><input id="sf-name" name="name" required autocomplete="name"></div>
+<div class="pk-field"><label for="sf-email">Email</label><input id="sf-email" name="email" type="email" required autocomplete="email" inputmode="email"></div>
+<div class="pk-field pk-field--wide"><label for="sf-channel">Your channel or account link</label><input id="sf-channel" name="channel" type="url" required placeholder="https://youtube.com/@yourchannel" inputmode="url"></div>
+<div class="pk-field pk-field--wide"><label for="sf-video">One video you&rsquo;ve already published that you&rsquo;d like re-edited</label><input id="sf-video" name="video" type="url" required placeholder="Link to the video" inputmode="url"></div>
+<div class="pk-field"><label for="sf-month">How many videos do you publish a month?</label><select id="sf-month" name="per_month" required><option value="">Choose</option><option>1&ndash;3</option><option>4&ndash;10</option><option>10+</option></select></div>
+<div class="pk-field"><label for="sf-budget">Budget per edited video</label><select id="sf-budget" name="budget" required><option value="">Choose</option><option>under $100</option><option>$100&ndash;300</option><option>$300&ndash;750</option><option>$750+</option><option>not sure yet</option></select></div>
+<div class="pk-field pk-field--wide"><label for="sf-notes">Anything else? <span>(optional)</span></label><input id="sf-notes" name="notes" maxlength="300"></div>
+<div class="pk-hp" aria-hidden="true"><label for="sf-hp">Leave this empty</label><input id="sf-hp" name="_honey" tabindex="-1" autocomplete="off"></div>
+<div class="pk-field--wide pk-form-foot"><button class="pk-btn pk-btn--blue" type="submit">Request my free sample</button><p class="pk-form-msg" role="status" aria-live="polite"></p></div>
+</form>
+<script>
+(function(){
+  var f=document.getElementById('sample-form'); if(!f) return;
+  var msg=f.querySelector('.pk-form-msg'), btn=f.querySelector('button');
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    if(f._honey && f._honey.value){return;}
+    if(!f.checkValidity()){f.reportValidity();msg.textContent='Please fill in the fields above.';return;}
+    var d={}; new FormData(f).forEach(function(v,k){d[k]=String(v).trim();});
+    delete d._honey;
+    d._subject='Sample request \u00b7 '+d.per_month+'/mo \u00b7 '+d.budget+' \u00b7 '+d.name;
+    d._replyto=d.email; d._template='table'; d._captcha='false';
+    btn.disabled=true; msg.textContent='Sending\u2026';
+    fetch('https://formsubmit.co/ajax/mehrshad@peaklineedit.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)!=='true')throw 0;});})
+      .then(function(){f.reset();f.classList.add('is-sent');msg.textContent='Thanks! I\u2019ll look at your channel and reply within 48 hours.';})
+      .catch(function(){btn.disabled=false;msg.innerHTML='Couldn\u2019t send. Please email me at <a href="mailto:mehrshad@peaklineedit.com">mehrshad@peaklineedit.com</a>.';});
+  });
+})();
+</script>
 </div>
 </section>
 
@@ -364,7 +408,7 @@ html{scroll-behavior:smooth}
 <span class="pk-label"><i></i>Contact</span>
 <h2 class="pk-h2">Send me your channel.</h2>
 <p class='pk-p'>Send me a link to your channel and I'll reply with the first thing I'd change.</p>
-<div class="pk-ctas" style="margin-top:8px"><a class="pk-btn pk-btn--blue" href="mailto:mehrshad@peaklineedit.com?subject=Free%20sample">Email me</a></div>
+<div class="pk-ctas" style="margin-top:8px"><a class="pk-btn pk-btn--blue" href="/#sample">Get a free sample</a></div>
 </div>
 <div class="pk-ways">
 <a class="pk-way" href="mailto:mehrshad@peaklineedit.com"><span class="pk-way-ic"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2.5" y="4.5" width="15" height="11" rx="2" stroke="currentColor" stroke-width="1.6"></rect><path d="m3 5.5 7 5.5 7-5.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path></svg></span><div><b>mehrshad@peaklineedit.com</b><span>Email</span></div></a>
